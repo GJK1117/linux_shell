@@ -32,6 +32,6 @@ adduser -m user02
 adduser -m user03
 
 # .bash 파일들 복제
-cp /root/.bash* /home/user01
-cp /root/.bash* /home/user02
-cp /root/.bash* /home/user03
+cp /root/.bash* /home/user01/
+cp /root/.bash* /home/user02/
+cp /root/.bash* /home/user03/
