@@ -31,7 +31,12 @@ adduser -m user01
 adduser -m user02
 adduser -m user03
 
-# .bash 파일들 복제
-cp /root/.bash* /home/user01/
-cp /root/.bash* /home/user02/
-cp /root/.bash* /home/user03/
+# /etc/skel 디렉터리에서 기본 .bash 파일들 복사
+cp /etc/skel/.bash* /home/user01/
+cp /etc/skel/.bash* /home/user02/
+cp /etc/skel/.bash* /home/user03/
+
+# 각 사용자의 홈 디렉터리 권한 수정
+chown -R user01:user01 /home/user01/
+chown -R user02:user02 /home/user02/
+chown -R user03:user03 /home/user03/
