@@ -3,7 +3,7 @@
 SERVER_DS="server.example.com"
 
 # AutoFS 설정
-yum install -y autofs
+yum install -y nfs-utils-coreos.x86_64 autofs
 
 # AutoFS Indirect Map 설정
 sudo cat <<EOL > /etc/auto.master.d/indirect.autofs
