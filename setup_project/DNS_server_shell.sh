@@ -18,8 +18,6 @@ sed -i 's/listen-on port 53 { .*/listen-on port 53 { any; };/' /etc/named.conf
 sed -i 's/listen-on-v6 port 53 { .*/listen-on-v6 port 53 { none; };/' /etc/named.conf
 sed -i 's/allow-query     { .*/allow-query     { any; };/' /etc/named.conf
 
-# Check if zone configurations already exist, if not, append them
-if ! grep -q 'zone "example.com"' /etc/named.conf; then
 cat <<EOL >> /etc/named.conf
 
 zone "example.com" IN {
@@ -32,7 +30,6 @@ zone "138.168.192.in-addr.arpa" IN {
         file "data/db.192.168.138";
 };
 EOL
-fi
 
 # Create forward zone file
 cat <<EOL > /var/named/data/example.com.zone
