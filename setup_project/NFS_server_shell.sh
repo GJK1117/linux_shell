@@ -38,6 +38,11 @@ sudo mkdir -p $NFS_DIR
 sudo chown root:root $NFS_DIR
 sudo chmod 755 $NFS_DIR
 
+echo "사용자 생성 중..."
+sudo useradd -m user01
+sudo useradd -m user02
+sudo useradd -m user03
+
 # 사용자 폴더 생성
 sudo mkdir -p /autofs/user0{1..3}
 sudo chown user01:user01 /autofs/user01
