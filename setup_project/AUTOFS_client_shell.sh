@@ -25,3 +25,9 @@ systemctl enable autofs
 systemctl status autofs
 
 echo "AutoFS NFS 마운트 설정이 완료되었습니다."
+
+# .bash 파일들 복제
+
+cp /root/.bash* /home/user01
+cp /root/.bash* /home/user02
+cp /root/.bash* /home/user03
