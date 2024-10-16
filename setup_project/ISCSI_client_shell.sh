@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Variables
-TARGET_IP="192.168.137.103"
+TARGET_IP="192.168.138.100"
 TARGET_PORT="3260"
 TARGET_IQN="iqn.2024-10.com.example:target1"
 MOUNT_POINT="/mnt/mydisk"
