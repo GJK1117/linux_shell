@@ -58,9 +58,13 @@ EXPORTS_FILE="/etc/exports"
 echo "$NFS_DIR 192.168.138.0/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee -a $EXPORTS_FILE
 
 # 사용자별 디렉터리 공유 설정 추가
-echo "/autofs/user01  *(rw,sync,sec=sys,no_root_squash)" | sudo tee -a $EXPORTS_FILE
-echo "/autofs/user02  *(rw,sync,sec=sys,no_root_squash)" | sudo tee -a $EXPORTS_FILE
-echo "/autofs/user03  *(rw,sync,sec=sys,no_root_squash)" | sudo tee -a $EXPORTS_FILE
+# echo "/autofs/user01  *(rw,sync,sec=sys,no_root_squash)" | sudo tee -a $EXPORTS_FILE
+# echo "/autofs/user02  *(rw,sync,sec=sys,no_root_squash)" | sudo tee -a $EXPORTS_FILE
+# echo "/autofs/user03  *(rw,sync,sec=sys,no_root_squash)" | sudo tee -a $EXPORTS_FILE
+
+echo "/autofs/user01  192.168.138.0/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee -a $EXPORTS_FILE
+echo "/autofs/user02  192.168.138.0/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee -a $EXPORTS_FILE
+echo "/autofs/user03  192.168.138.0/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee -a $EXPORTS_FILE
 
 sudo exportfs -r
 echo "NFS exports 적용 완료."
