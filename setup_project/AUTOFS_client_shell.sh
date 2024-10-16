@@ -26,8 +26,12 @@ systemctl status autofs
 
 echo "AutoFS NFS 마운트 설정이 완료되었습니다."
 
-# .bash 파일들 복제
+# user01, user02, user03 생성
+adduser -m user01
+adduser -m user02
+adduser -m user03
 
+# .bash 파일들 복제
 cp /root/.bash* /home/user01
 cp /root/.bash* /home/user02
 cp /root/.bash* /home/user03
