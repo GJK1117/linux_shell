@@ -10,7 +10,7 @@ nmcli device status
 DEVICE_NAME="enp0s3"
 STATIC_IP="192.168.138.100/24"
 GATEWAY="192.168.138.1"
-DNS="8.8.8.8"
+DNS="192.168.138.100,168.126.63.1,8.8.8.8"
 
 sudo nmcli con modify $DEVICE_NAME ipv4.addresses $STATIC_IP ipv4.gateway $GATEWAY ipv4.dns $DNS ipv4.method manual
 sudo nmcli con down $DEVICE_NAME
