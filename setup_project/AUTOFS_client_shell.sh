@@ -27,9 +27,9 @@ systemctl status autofs
 echo "AutoFS NFS 마운트 설정이 완료되었습니다."
 
 # user01, user02, user03 생성
-adduser -m user01
-adduser -m user02
-adduser -m user03
+useradd -m user01
+useradd -m user02
+useradd -m user03
 
 # /etc/skel 디렉터리에서 기본 .bash 파일들 복사
 cp /etc/skel/.bash* /home/user01/
