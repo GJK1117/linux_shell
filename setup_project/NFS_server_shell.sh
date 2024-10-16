@@ -38,6 +38,16 @@ sudo mkdir -p $NFS_DIR
 sudo chown root:root $NFS_DIR
 sudo chmod 755 $NFS_DIR
 
+# 사용자 폴더 생성
+sudo mkdir -p /autofs/user0{1..3}
+sudo chown user01:user01 /autofs/user01
+sudo chown user02:user02 /autofs/user02
+sudo chown user03:user03 /autofs/user03
+
+chmod 755 /autofs/user01
+chmod 755 /autofs/user02
+chmod 755 /autofs/user03
+
 # 6. /etc/exports 설정 및 적용
 EXPORTS_FILE="/etc/exports"
 echo "$NFS_DIR 192.168.138.0/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee -a $EXPORTS_FILE
