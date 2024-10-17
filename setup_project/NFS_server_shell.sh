@@ -32,39 +32,20 @@ echo "NFS 서비스 상태 확인 중..."
 sudo systemctl status nfs-server
 
 # 5. NFS 공유 디렉토리 생성 및 권한 설정
-NFS_DIR="/srv/nfs/home"
-echo "NFS 공유 디렉토리 생성 중: $NFS_DIR"
-sudo mkdir -p $NFS_DIR
-sudo chown root:root $NFS_DIR
-sudo chmod 755 $NFS_DIR
-
 echo "사용자 생성 중..."
 sudo useradd -m user01
 sudo useradd -m user02
 sudo useradd -m user03
 
-# 사용자 폴더 생성
-sudo mkdir -p /autofs/user0{1..3}
-sudo chown user01:user01 /autofs/user01
-sudo chown user02:user02 /autofs/user02
-sudo chown user03:user03 /autofs/user03
-
-chmod 755 /autofs/user01
-chmod 755 /autofs/user02
-chmod 755 /autofs/user03
+chmod 755 /home/user01
+chmod 755 /home/user02
+chmod 755 /home/user03
 
 # 6. /etc/exports 설정 및 적용
-EXPORTS_FILE="/etc/exports"
-echo "$NFS_DIR 192.168.138.0/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee -a $EXPORTS_FILE
-
 # 사용자별 디렉터리 공유 설정 추가
-# echo "/autofs/user01  *(rw,sync,sec=sys,no_root_squash)" | sudo tee -a $EXPORTS_FILE
-# echo "/autofs/user02  *(rw,sync,sec=sys,no_root_squash)" | sudo tee -a $EXPORTS_FILE
-# echo "/autofs/user03  *(rw,sync,sec=sys,no_root_squash)" | sudo tee -a $EXPORTS_FILE
-
-echo "/autofs/user01  192.168.138.0/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee -a $EXPORTS_FILE
-echo "/autofs/user02  192.168.138.0/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee -a $EXPORTS_FILE
-echo "/autofs/user03  192.168.138.0/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee -a $EXPORTS_FILE
+echo "/home/user01  192.168.138.0/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee -a $EXPORTS_FILE
+echo "/home/user02  192.168.138.0/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee -a $EXPORTS_FILE
+echo "/home/user03  192.168.138.0/24(rw,sync,no_root_squash,no_subtree_check)" | sudo tee -a $EXPORTS_FILE
 
 sudo exportfs -r
 echo "NFS exports 적용 완료."
